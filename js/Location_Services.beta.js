@@ -722,8 +722,11 @@ function X2JS(config) {
 
         var parser = null;
         var domNode = null;
+        if (DOMParser) {
+            parser = new DOMParser(config.xmldomOptions);
 
-        if (CustomDOMParser) {
+            domNode = parser.parseFromString(xml, "text/xml");
+        } else if (CustomDOMParser) {
             // This branch is used for node.js, with the xmldom parser.
             parser = new CustomDOMParser(config.xmldomOptions);
 

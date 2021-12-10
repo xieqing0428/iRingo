@@ -3,14 +3,14 @@ README:https://github.com/VirgilClyne/iRingo
 */
 
 //你的KEY，参见https://dev.qweather.com/docs/resource/get-key/
-const key = '123456789ABC'
+const key = 123456789
 
 const $ = new Env('Apple_Weather');
 !(async () => {
     await getOrigin($request.url)
     await getNextHourStatus($response.body)
-    await getGridWeatherMinutely($.lat, $.lng, key, switchLanguage($.language))
-    await outputData($.lat, $.lng, $.GridWeather)
+    await getGridWeatherMinutely($.lat, $.lng, key)
+    await outputData($.lat, $.lng, $.getPrecipitation, $.Minutely)
 })()
     .catch((e) => $.logErr(e))
     .finally(() => $.done())
@@ -60,22 +60,22 @@ function getNextHourStatus(body) {
 
 // Step 3
 // Get Nearest forecast Next Hour Station AQI Data
-// https://dev.qweather.com/docs/api/grid-weather/minutely/
-// https://api.qweather.com/v7/minutely/5m?location=${lng},${lat}&key=${key}&lang=${lang}
-function getGridWeatherMinutely(lat, lng, key, lang, timeout = 0) {
+// https://www.weatherol.cn/api/minute/getPrecipitation?type=forecast&ll=${lng},${lat}
+function getGridWeatherMinutely(lat, lng, timeout = 0) {
     return new Promise((resove) => {
         if ($.countryCode = 'CN') {
+            lang = switchLanguage($.language)
             setTimeout( ()=>{
                 const url = {
-                    url: `https://api.qweather.com/v7/minutely/5m?location=${lng},${lat}&key=${key}&lang=${lang}`,
+                    url: `https://www.weatherol.cn/api/minute/getPrecipitation?type=forecast&ll=${lng},${lat}`,
                 }
                 $.get(url, (error, response, data) => {
                     try {
                         const _data = JSON.parse(data)
                         if (error) throw new Error(error)
-                        if (_data.code == "200") {
-                            $.GridWeather = _data
-                            $.Minutely = _data.minutely
+                        if (_data.status == "ok") {
+                            $.getPrecipitation = _data
+                            $.Minutely = _data.result.minutely
                             /*                           
                             if (_data.minutely[0]) {
                                 $.Minutely = _data;
@@ -104,7 +104,7 @@ function getGridWeatherMinutely(lat, lng, key, lang, timeout = 0) {
 
 // Step 6
 // Output Data
-function outputData(lat, lng, obs) {
+function outputData(lat, lng, obs, minutely) {
     let body = $response.body
     let weather = JSON.parse(body);
 
@@ -132,34 +132,24 @@ function outputData(lat, lng, obs) {
         if (obs) { // From Observation Station
             weather.forecastNextHour.source = obs.refer.sources[0];
             weather.forecastNextHour.learnMoreURL = obs.fxLink;
-            weather.forecastNextHour.metadata.longitude = lng;
+            weather.forecastNextHour.metadata.longitude = obs.location[0];
             weather.forecastNextHour.metadata.providerLogo = "";
             weather.forecastNextHour.metadata.providerName = obs.refer.sources[0];
             weather.forecastNextHour.metadata.expireTime = convertTime(new Date(obs.updateTime), 'add-1h-floor');
             weather.forecastNextHour.metadata.language ? weather.forecastNextHour.metadata.language : weather.currentWeather.metadata.language;
             //weather.forecastNextHour.metadata.language = $.language;
-            weather.forecastNextHour.metadata.latitude = lat;
+            weather.forecastNextHour.metadata.latitude = obs.location[1];
             weather.forecastNextHour.metadata.reportedTime = convertTime(new Date(obs.updateTime), 'remain');
             weather.forecastNextHour.metadata.readTime = convertTime(new Date(), 'remain');
             //weather.forecastNextHour.metadata.units = "m";
         }
-        if (obs.minutely) { // From Observation Station
-            /*
+        if (minutely) { // From Observation Station
             var maps= new Map([['fxTime','startTime'],['precip','precipIntensity']]);
             obs.minutely = obs.minutely.map(element =>{
                 element.placeCode = maps.get(element.placeCode);
                 return element;
             });
             weather.forecastNextHour.minutes = obs.minutely
-            */
-            obs.minutely = obs.minutely.map(element =>{
-                return {
-                    startTime: convertTime(new Date(element.fxTime), 'remain'), //五分钟
-                    precipChance: element.precipChance, //没有概率
-                    precipIntensityPerceived: element.precipIntensityPerceived, //没有体感
-                    precipIntensity: element.precip, //只有降水量
-                }
-            })
         }
     };
     body = JSON.stringify(weather);

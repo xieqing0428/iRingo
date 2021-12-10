@@ -10,8 +10,11 @@ macOS 12.0.1, iOS 15.1, iOS 14.8 测试通过
 > 目录  
 - [iRingo](#iringo)
 - [通用配置](#通用配置)
-  - [示例](#示例)
+  - [效果说明举例](#效果说明举例)
   - [建议配置](#建议配置)
+    - [Loon](#loon)
+    - [Quantumult X](#quantumult-x)
+    - [Surge](#surge)
 - [🌤天气](#天气)
   - [简介](#简介)
   - [功能列表](#功能列表)
@@ -23,6 +26,9 @@ macOS 12.0.1, iOS 15.1, iOS 14.8 测试通过
   - [作用与副作用](#作用与副作用)
   - [关于定位服务配置文件](#关于定位服务配置文件)
   - [安装链接](#安装链接-1)
+    - [🧪测试版](#测试版)
+    - [🆕新版](#新版)
+    - [旧版](#旧版)
 - [🔍Siri与搜索🆕](#siri与搜索)
   - [简介](#简介-2)
   - [激活方式](#激活方式-1)
@@ -30,6 +36,8 @@ macOS 12.0.1, iOS 15.1, iOS 14.8 测试通过
   - [功能列表](#功能列表-1)
   - [已知「Siri建议」服务器列表](#已知siri建议服务器列表)
   - [安装链接](#安装链接-2)
+    - [🆕新版](#新版-1)
+    - [旧版](#旧版-1)
 - [🗺️Apple Maps](#️apple-maps)
   - [简介](#简介-3)
   - [激活方式](#激活方式-2)
@@ -45,12 +53,20 @@ macOS 12.0.1, iOS 15.1, iOS 14.8 测试通过
   - [解锁状态说明](#解锁状态说明)
   - [关于新闻小组件](#关于新闻小组件)
   - [安装链接](#安装链接-5)
+- [🌐iCloud 专用代理(🚧测试中，有问题请反馈)](#icloud-专用代理测试中有问题请反馈)
+  - [简介](#简介-6)
+  - [激活方式](#激活方式-5)
+  - [解锁状态说明](#解锁状态说明-1)
+  - [功能列表](#功能列表-3)
+  - [安装链接](#安装链接-6)
+    - [`Surge for macOS`with`网关模式`](#surge-for-macoswith网关模式)
+    - [`Clash`](#clash)
 
 ---
 
 # 通用配置
 
-## 示例
+## 效果说明举例
   * 同时启用以下一个模块:
     * `Siri与搜索`
     * 效果: `来自APPLE的内容\来自APPLE的建议\Siri建议`功能可用   
@@ -69,16 +85,16 @@ macOS 12.0.1, iOS 15.1, iOS 14.8 测试通过
     * 有SIM卡的设备，如iPhone，只要检测到SIM卡，且SIM卡不属于可用地区，`Apple News`会回到[解锁状态说明](#解锁状态说明)中的`解锁失效`状态。
 
 ## 建议配置
-  * Loon:
-    * plugin安装于`仪表`-`插件`-`+`
+### Loon
+  * plugin安装于`仪表`-`插件`-`+`
     1. [🌤天气](#天气)：[Apple_Weather.plugin](./plugin/Apple_Weather.plugin?raw=true " Replace Apple Weather 🇺🇸US with @waqi.info") 
     2. [📍定位服务](#定位服务)：[Geo_Services.plugin](./plugin/Geo_Services.plugin?raw=true " Response Geo Services to 🇺🇸US")
     3. [🔍Siri与搜索](#siri与搜索)：[Siri_Suggestions.plugin](./plugin/Siri_Suggestions.plugin?raw=true " Enable Siri Suggestions") (Author:@Tartarus2014)
     4. [🗺️Apple Maps](#apple-maps)：[Apple_Maps_CN.plugin](./plugin/Apple_Maps_CN.plugin?raw=true " Redirect Apple Maps to 🇨🇳CN")
     5. [📺Apple TV](#apple-tv)：[Apple_TV.plugin](./plugin/Apple_TV.plugin?raw=true " Enable Apple TV app")
     6. [📰Apple News](#apple-news)：[Apple_News.plugin](./plugin/Apple_News.plugin?raw=true " Unlock Apple News 🇺🇸US") (Author:@Tartarus2014) (该插件需要匹配代理策略组)
-  * Quantumult X:
-    * qxrewrite安装于`设置`-`重写`-`引用`
+### Quantumult X
+  * qxrewrite安装于`设置`-`重写`-`引用`
     1. [🌤天气](#天气)：[Apple_Weather.qxrewrite](./qxrewrite/Apple_Weather.qxrewrite?raw=true " Replace Apple Weather with 🇺🇸US @waqi.info")
     2. [📍定位服务](#定位服务)：[Geo_Services.qxrewrite](./qxrewrite/Geo_Services.qxrewrite?raw=true " Response Geo Services to 🇺🇸US")
     3. [🔍Siri与搜索](#siri与搜索)：[Siri_Suggestions.qxrewrite](./qxrewrite/Siri_Suggestions.qxrewrite?raw=true " Enable Siri Suggestions")
@@ -86,13 +102,13 @@ macOS 12.0.1, iOS 15.1, iOS 14.8 测试通过
     5. [📺Apple TV](#apple-tv)：[Apple_TV.qxrewrite](./qxrewrite/Apple_TV.qxrewrite?raw=true " Enable Apple TV app")
     6. [📰Apple News](#apple-news)：[Apple_News.qxrewrite](./qxrewrite/Apple_News.qxrewrite?raw=true " Unlock Apple News 🇺🇸US")
       * 规则集:[Apple_News_for_Quantumult_X.list](./RuleSet/Apple_News_for_Quantumult_X.list?raw=true "Apple_News") (需要自行添加至`设置`-`分流`-`引用`并设置`策略偏好`)
-  * Surge:
-    * sgmodule安装于`模块`-`安装新模块…`
+### Surge
+  * sgmodule安装于`模块`-`安装新模块…`
     1. [🌤天气](#天气)：[Apple_Weather.sgmodule](./sgmodule/Apple_Weather.sgmodule?raw=true " Replace Apple Weather with 🇺🇸US @waqi.info")
     2. [📍定位服务](#定位服务)：[Geo_Services.sgmodule](./sgmodule/Geo_Services.sgmodule?raw=true " Response Geo Services to 🇺🇸US")
     3. [🔍Siri与搜索](#siri与搜索)：[Siri_Suggestions.sgmodule](./sgmodule/Siri_Suggestions.sgmodule?raw=true " Enable Siri Suggestions")
       * macOS用域名集:[Wikipedia_for_Look_Up.list](./RuleSet/Wikipedia_for_Look_Up.list?raw=true "Wikipedia for Look Up")
-        * 此域名集只作用于macOS的`词典`和维基百科搜索集成，且需要开启Surge的`增强模式`，iOS/iPadOS不需要此域名集，Loon与Quantumult X无效且不适用。
+      * 此域名集只作用于macOS的`词典`和维基百科搜索集成，且需要开启Surge的`增强模式`，iOS/iPadOS不需要此域名集，运行于M1处理器的Mac设备上的Loon与Quantumult X可能有效。
       * 更多预置策略组的模块请见[安装链接](#安装链接-2)
     4. [🗺️Apple Maps](#apple-maps)：[Apple_Maps_CN.sgmodule](./sgmodule/Apple_Maps_CN.sgmodule?raw=true " Redirect Apple Maps to 🇨🇳CN")
     5. [📺Apple TV](#apple-tv)：[Apple_TV.sgmodule](./sgmodule/Apple_TV.sgmodule?raw=true " Enable Apple TV app")
@@ -187,29 +203,22 @@ macOS 12.0.1, iOS 15.1, iOS 14.8 测试通过
     * `地图`-`为“地图”提供助力`-`评分与照片`
     * `地图`-`为“地图”提供助力`-`显示评分和照片建议`
 
-## 安装链接 
-  * Loon:
-    * 🧪测试版,比`🆕新版`新增修改定位服务配置文件的功能(🚧测试中，随时可能不可用):
+## 安装链接
+### 🧪测试版
+  * 🧪测试版,比`🆕新版`新增修改定位服务配置文件的功能(🚧测试中，随时可能不可用):
+    * Loon:    
       * [Location_Services.beta.plugin](./plugin/Location_Services.beta.plugin?raw=true " Modify Location Services to 🇺🇳I18N")
-    * 🆕新版,“直接返回构造的`本地请求`”的新实现方式:
-      * 修改地区检测为🇺🇸US:[Geo_Services.plugin](./plugin/Geo_Services.plugin?raw=true " Response Geo Services to 🇺🇸US")
-    * 旧版,“改写返回的`网络请求`”的旧实现方式:
-      * 修改地区检测为🇨🇳CN:[Geo_Services_CN.plugin](./plugin/Geo_Services_CN.plugin?raw=true " Redirect Geo Services to 🇨🇳CN") (Author:@Tartarus2014) 
-      * 修改地区检测为🇺🇸US:[Geo_Services_US.plugin](./plugin/Geo_Services_US.plugin?raw=true " Redirect Geo Services to 🇺🇸US") (Author:@Tartarus2014) 
-      * 修改地区检测为🇯🇵JP:[Geo_Services_JP.plugin](./plugin/Geo_Services_JP.plugin?raw=true " Redirect Geo Services to 🇯🇵JP")
-  * Quantumult X:
-    * 🧪测试版,比`🆕新版`新增修改定位服务配置文件的功能(🚧测试中，随时可能不可用):
+    * Quantumult X:
       * [Location_Services.beta.qxrewrite](./qxrewrite/Location_Services.beta.qxrewrite?raw=true " Modify Location Services to 🇺🇳I18N")
-    * 🆕新版,“直接返回构造的`本地请求`”的新实现方式:
-      * 修改地区检测为🇺🇸US:[Geo_Services.qxrewrite](./qxrewrite/Geo_Services.qxrewrite?raw=true " Response Geo Services to 🇺🇸US")
-    * 旧版,“改写返回的`网络请求`”的旧实现方式:
-      * 修改地区检测为🇨🇳CN:[Geo_Services_CN.qxrewrite](./qxrewrite/Geo_Services_CN.qxrewrite?raw=true " Redirect Geo Services to 🇨🇳CN")
-      * 修改地区检测为🇺🇸US:[Geo_Services_US.qxrewrite](./qxrewrite/Geo_Services_US.qxrewrite?raw=true " Redirect Geo Services to 🇺🇸US")
-      * 修改地区检测为🇯🇵JP:[Geo_Services_JP.qxrewrite](./qxrewrite/Geo_Services_JP.qxrewrite?raw=true " Redirect Geo Services to 🇯🇵JP")
-  * Surge:
-    * 🧪测试版,比`🆕新版`新增修改定位服务配置文件的功能(🚧测试中，随时可能不可用):
+    * Surge:
       * [Location_Services.beta.sgmodule](./sgmodule/Location_Services.beta.sgmodule?raw=true " Modify Location Services to 🇺🇳I18N")
-    * 🆕新版,“直接返回构造的`本地请求`”的新实现方式:
+### 🆕新版
+  * 🆕新版,“直接返回构造的`本地请求`”的新实现方式
+    * Loon:    
+      * 修改地区检测为🇺🇸US:[Geo_Services.plugin](./plugin/Geo_Services.plugin?raw=true " Response Geo Services to 🇺🇸US")
+    * Quantumult X:
+      * 修改地区检测为🇺🇸US:[Geo_Services.qxrewrite](./qxrewrite/Geo_Services.qxrewrite?raw=true " Response Geo Services to 🇺🇸US")
+    * Surge:
       * 修改地区检测为🇺🇸US:[Geo_Services.sgmodule](./sgmodule/Geo_Services.sgmodule?raw=true " Response Geo Services to 🇺🇸US")
       * 修改地区检测为🇨🇳CN:[Geo_Services_CN.sgmodule](./sgmodule/Geo_Services_CN.sgmodule?raw=true " Response Geo Services to 🇨🇳CN")
       * 修改地区检测为🇬🇧UK:[Geo_Services_UK.sgmodule](./sgmodule/Geo_Services_UK.sgmodule?raw=true " Response Geo Services to 🇬🇧UK")
@@ -217,7 +226,17 @@ macOS 12.0.1, iOS 15.1, iOS 14.8 测试通过
       * 修改地区检测为🇹🇼TW:[Geo_Services_TW.sgmodule](./sgmodule/Geo_Services_TW.sgmodule?raw=true " Response Geo Services to 🇹🇼TW")
       * 修改地区检测为🇯🇵JP:[Geo_Services_JP.sgmodule](./sgmodule/Geo_Services_JP.sgmodule?raw=true " Response Geo Services to 🇯🇵JP")
       * 修改地区检测为🇦🇺AU:[Geo_Services_AU.sgmodule](./sgmodule/Geo_Services_AU.sgmodule?raw=true " Response Geo Services to 🇦🇺AU")
-    * 旧版,“改写返回的`网络请求`”的旧实现方式:
+### 旧版
+  * 旧版,“改写返回的`网络请求`”的旧实现方式
+    * Loon:
+      * 修改地区检测为🇨🇳CN:[Geo_Services_CN.plugin](./plugin/Geo_Services_CN.plugin?raw=true " Redirect Geo Services to 🇨🇳CN") (Author:@Tartarus2014) 
+      * 修改地区检测为🇺🇸US:[Geo_Services_US.plugin](./plugin/Geo_Services_US.plugin?raw=true " Redirect Geo Services to 🇺🇸US") (Author:@Tartarus2014) 
+      * 修改地区检测为🇯🇵JP:[Geo_Services_JP.plugin](./plugin/Geo_Services_JP.plugin?raw=true " Redirect Geo Services to 🇯🇵JP")
+    * Quantumult X:
+      * 修改地区检测为🇨🇳CN:[Geo_Services_CN.qxrewrite](./qxrewrite/Geo_Services_CN.qxrewrite?raw=true " Redirect Geo Services to 🇨🇳CN")
+      * 修改地区检测为🇺🇸US:[Geo_Services_US.qxrewrite](./qxrewrite/Geo_Services_US.qxrewrite?raw=true " Redirect Geo Services to 🇺🇸US")
+      * 修改地区检测为🇯🇵JP:[Geo_Services_JP.qxrewrite](./qxrewrite/Geo_Services_JP.qxrewrite?raw=true " Redirect Geo Services to 🇯🇵JP")
+    * Surge:
       * 修改地区检测为🇺🇸US:[Geo_Services_US.sgmodule](./sgmodule/Geo_Services_US.sgmodule?raw=true " Redirect Geo Services to 🇺🇸US")
 
 ---
@@ -248,42 +267,44 @@ macOS 12.0.1, iOS 15.1, iOS 14.8 测试通过
   9. 正常使用
 
 ## 辅助激活与切换「Siri建议」服务器地区的方式
-* 不同地区的服务器提供的功能、搜索结果、建议有所不同，可通过下列手段刷新服务器
+* 不同地区的服务器提供的功能、搜索结果、建议有所不同，可通过下列手段刷新服务器（仅针对`旧版，用重写(Rewrite)功能修改为固定地区`的`Siri_Suggestions`）
   * macOS上关闭再开启`系统偏好设置`-`聚焦`-`Siri建议`
   * iOS上关闭再开启`设置`-`Siri与搜索`-`来自APPLE的内容`和`来自APPLE的建议`
   * 更改`设置`-`通用`-`语言与地区`-`地区`  
-  * 等待约半小时，「Siri建议」会向服务器`*.smoot.apple.com/bag`请求刷新区域设置与功能可用状态
-  * 激活过程中采用不同地区的`Geo_Services_*.sgmodule`模块
+  * 等待约半小时，「Siri建议」会根据`基于网络的地区检测`结果向服务器`*.smoot.apple.com/bag`请求刷新区域设置与功能可用状态
+  * 激活过程中采用不同的`Geo_Services_*.sgmodule`模块模拟不同地区的`基于网络的地区检测`结果
 
 ## 功能列表
-  * 在以下位置及功能中可用: 
+  * 在以下位置及功能中可用:
     - [x] 聚焦搜索(Spotlight)
     - [x] 查询(Look Up)
     - [x] Safari浏览器(Safari)
+    - [x] 地图(Apple Maps)
+    - [x] 新闻(Apple News)
     - [ ] 询问Siri(Ask Siri)
       - [x] 无SIM卡设备可被[定位服务](#定位服务)模块修改切换至海外版(维基百科)
       - [ ] SIM卡设备会因「MCC / MNC」检测回退至国内版（百度百科)
-  * 启用的功能:  
+  * 启用的功能:
     - [x] 来自APPLE的内容(CONTENT FROM APPLE)
     - [x] 来自APPLE的建议(SUGGESTIONS FROM APPLE)
     - [x] Siri建议(Siri Suggestions)
   * 已知可用的信息卡片:
-    - [x] 天气 (已修复，搜索关键词`城市名 天气`或`天气 城市名`，例如`天气 上海`，不是所有城市都有天气搜索结果)
-    - [x] Siri资料(Siri Knowledge)  截图:[macOS](./ScreenShots/Siri%20Knowledge%20-%20Spotlight%20-%20macOS.png?raw=true "Siri Knowledge - Spotlight - macOS")   
-    - [x] Siri建议的网站(Siri Suggested Websites)  
-    - [x] 维基百科 (macOS端需要Surge启用“增强模式”)  
+    - [x] 天气 (已在`🆕新版Siri_Suggestions.*`中修复，搜索关键词`城市名 天气`或`天气 城市名`，例如`天气 上海`，不是所有城市都有天气搜索结果)
+    - [x] Siri资料(Siri Knowledge)  截图:[macOS](./ScreenShots/Siri%20Knowledge%20-%20Spotlight%20-%20macOS.png?raw=true "Siri Knowledge - Spotlight - macOS")
+    - [x] Siri建议的网站(Siri Suggested Websites)
+    - [x] 维基百科 (macOS端需要Surge启用“增强模式”)
     - [ ] 地图 (当地图为中国区时不显示内容，有知道解决方法或成因的请联系我)
-    - [x] 体育  截图:[macOS](./ScreenShots/Sports%20-%20Spotlight%20-%20macOS.png?raw=true "Sports - Spotlight - macOS") / [iOS](./ScreenShots/Sports%20-%20Spotlight%20-%20iOS.jpeg?raw=true "Sports - Spotlight - iOS")   
-    - [x] 股票  截图:[macOS](./ScreenShots/Stock%20-%20Spotlight%20-%20macOS.png?raw=true "Stock - Spotlight - macOS")   
-    - [x] 航班  截图:[macOS](./ScreenShots/Flights%20-%20Spotlight%20-%20macOS.png?raw=true "Flights - Spotlight - macOS")   
-    - [x] App Store\Mac App Store  截图:[macOS](./ScreenShots/Mac%20App%20Store%20-%20Spotlight%20-%20macOS.png?raw=true "Mac App Store - Spotlight - macOS") / [iOS](./ScreenShots/App%20Store%20-%20Spotlight%20-%20iOS.jpeg?raw=true "App Store - Spotlight - iOS")    
-    - [x] 电影 & 电视节目   
-      - [x] tv  截图:[macOS](./ScreenShots/tv%20-%20Spotlight%20-%20macOS.png?raw=true "tv - Spotlight - macOS")   
-      - [x] iTunes  
-    - [x] 音乐  
-      - [x] Apple Music  截图:[macOS](./ScreenShots/Apple%20Music%20-%20Spotlight%20-%20macOS.png?raw=true "Apple Music - Spotlight - macOS") / [iOS](./ScreenShots/Apple%20Music%20-%20Spotlight%20-%20iOS.jpeg?raw=true "Apple Music - Spotlight - iOS")   
-      - [x] iTunes  
-    - [x] 新闻 
+    - [x] 体育  截图:[macOS](./ScreenShots/Sports%20-%20Spotlight%20-%20macOS.png?raw=true "Sports - Spotlight - macOS") / [iOS](./ScreenShots/Sports%20-%20Spotlight%20-%20iOS.jpeg?raw=true "Sports - Spotlight - iOS")
+    - [x] 股票  截图:[macOS](./ScreenShots/Stock%20-%20Spotlight%20-%20macOS.png?raw=true "Stock - Spotlight - macOS")
+    - [x] 航班  截图:[macOS](./ScreenShots/Flights%20-%20Spotlight%20-%20macOS.png?raw=true "Flights - Spotlight - macOS")
+    - [x] App Store\Mac App Store  截图:[macOS](./ScreenShots/Mac%20App%20Store%20-%20Spotlight%20-%20macOS.png?raw=true "Mac App Store - Spotlight - macOS") / [iOS](./ScreenShots/App%20Store%20-%20Spotlight%20-%20iOS.jpeg?raw=true "App Store - Spotlight - iOS")
+    - [x] 电影 & 电视节目
+      - [x] tv  截图:[macOS](./ScreenShots/tv%20-%20Spotlight%20-%20macOS.png?raw=true "tv - Spotlight - macOS")
+      - [x] iTunes
+    - [x] 音乐
+      - [x] Apple Music  截图:[macOS](./ScreenShots/Apple%20Music%20-%20Spotlight%20-%20macOS.png?raw=true "Apple Music - Spotlight - macOS") / [iOS](./ScreenShots/Apple%20Music%20-%20Spotlight%20-%20iOS.jpeg?raw=true "Apple Music - Spotlight - iOS")
+      - [x] iTunes
+    - [x] 新闻
     - [ ] Twitter集成 (官方功能列表中有此功能，有知道解决方法或成因的请联系我)
 
 ## 已知「Siri建议」服务器列表
@@ -309,32 +330,42 @@ macOS 12.0.1, iOS 15.1, iOS 14.8 测试通过
 |api-chi|芝加哥|未知|
 
 ## 安装链接
-  * Loon:
-    * 🆕新版，用脚本自动改为`语言与地区`相同设置:[Siri_Suggestions.plugin](./plugin/Siri_Suggestions.plugin?raw=true " Enable Siri Suggestions")
-    * 旧版，用重写修改地区为🇹🇼TW:[Siri_Suggestions_TW.plugin](./plugin/Siri_Suggestions_TW.plugin?raw=true " Enable Siri Suggestions 🇹🇼TW")
-    * 旧版，用重写修改地区为🇯🇵JP:[Siri_Suggestions_JP.plugin](./plugin/Siri_Suggestions_JP.plugin?raw=true " Enable Siri Suggestions 🇯🇵JP")
-    * 旧版，用重写修改地区为🇺🇸US:[Siri_Suggestions_US.plugin](./plugin/Siri_Suggestions_US.plugin?raw=true " Enable Siri Suggestions 🇺🇸US")
-  * Quantumult X:
-    * 🆕新版，用脚本自动改为`语言与地区`相同设置:[Siri_Suggestions.qxrewrite](./qxrewrite/Siri_Suggestions.qxrewrite?raw=true " Enable Siri Suggestions")
-    * 旧版，用重写修改地区为🇹🇼TW:[Siri_Suggestions_TW.qxrewrite](./qxrewrite/Siri_Suggestions_TW.qxrewrite?raw=true " Enable Siri Suggestions 🇹🇼TW") (Author:@edgexyz)
-    * 旧版，用重写修改地区为🇯🇵JP:[Siri_Suggestions_JP.qxrewrite](./qxrewrite/Siri_Suggestions_JP.qxrewrite?raw=true " Enable Siri Suggestions 🇯🇵JP")
-    * 旧版，用重写修改地区为🇺🇸US:[Siri_Suggestions_US.qxrewrite](./qxrewrite/Siri_Suggestions_US.qxrewrite?raw=true " Enable Siri Suggestions 🇺🇸US") (Author:@edgexyz)
-  * Surge:
-    * 适用于iOS/iPadOS,不含macOS规则集的模块:
-      * 🆕新版，用脚本自动改为`语言与地区`相同设置:[Siri_Suggestions.sgmodule](./sgmodule/Siri_Suggestions.sgmodule?raw=true " Enable Siri Suggestions")
+### 🆕新版
+  * 🆕新版，用脚本(Script)功能自动改为与系统`语言与地区`相同的设置
+    * Loon:
+      * 🆕:[Siri_Suggestions.plugin](./plugin/Siri_Suggestions.plugin?raw=true " Enable Siri Suggestions")
+    * Quantumult X:
+      * 🆕:[Siri_Suggestions.qxrewrite](./qxrewrite/Siri_Suggestions.qxrewrite?raw=true " Enable Siri Suggestions")
+    * Surge:
+      * 适用于iOS/iPadOS,不含macOS规则集的模块:
+      * 🆕:[Siri_Suggestions.sgmodule](./sgmodule/Siri_Suggestions.sgmodule?raw=true " Enable Siri Suggestions")
+        * macOS用域名集:[Wikipedia_for_Look_Up.list](./RuleSet/Wikipedia_for_Look_Up.list?raw=true "Wikipedia for Look Up")
+        * 此域名集只作用于macOS的`词典`和维基百科搜索集成，且需要开启Surge的`增强模式`，iOS/iPadOS不需要此域名集，运行于M1处理器的Mac设备上的Loon与Quantumult X可能有效。
+      * macOS/iOS通用模块:
+      * 🆕针对策略组为`PROXY`的模块:[Siri_Suggestions_for_Uppercase_PROXY.sgmodule](./sgmodule/Siri_Suggestions_for_Uppercase_PROXY.sgmodule?raw=true " Enable Siri Suggestions")
+      * 🆕针对策略组为`Proxy`的模块:[Siri_Suggestions_for_Proxy.sgmodule](./sgmodule/Siri_Suggestions_for_Proxy.sgmodule?raw=true " Enable Siri Suggestions") 
+      * 🆕针对策略组为`🌑Proxy`的模块(如:DivineEngine):[Siri_Suggestions_for_DivineEngine.sgmodule](./sgmodule/Siri_Suggestions_for_DivineEngine.sgmodule?raw=true " Enable Siri Suggestions") 
+      * 🆕针对策略组为`Apple`的模块:[Siri_Suggestions_for_Apple.sgmodule](./sgmodule/Siri_Suggestions_for_Apple.sgmodule?raw=true " Enable Siri Suggestions") 
+      * 🆕针对策略组为`🍎Apple`的模块:[Siri_Suggestions_for_Apple_icon.sgmodule](./sgmodule/Siri_Suggestions_for_Apple_icon.sgmodule?raw=true " Enable Siri Suggestions")
+      * 🆕针对策略组为`🍎 Apple`的模块(如:Surgio):[Siri_Suggestions_for_Surgio.sgmodule](./sgmodule/Siri_Suggestions_for_Surgio.sgmodule?raw=true " Enable Siri Suggestions")
+      * 🆕针对策略组为`🍎 苹果服务`的模块(如:ACL4SSR):[Siri_Suggestions_for_ACL4SSR.sgmodule](./sgmodule/Siri_Suggestions_for_ACL4SSR.sgmodule?raw=true " Enable Siri Suggestions")  
+### 旧版
+  * 旧版，用重写(Rewrite)功能修改为固定地区
+    * Loon:
+      * 旧版，用重写修改地区为🇹🇼TW:[Siri_Suggestions_TW.plugin](./plugin/Siri_Suggestions_TW.plugin?raw=true " Enable Siri Suggestions 🇹🇼TW")
+      * 旧版，用重写修改地区为🇯🇵JP:[Siri_Suggestions_JP.plugin](./plugin/Siri_Suggestions_JP.plugin?raw=true " Enable Siri Suggestions 🇯🇵JP")
+      * 旧版，用重写修改地区为🇺🇸US:[Siri_Suggestions_US.plugin](./plugin/Siri_Suggestions_US.plugin?raw=true " Enable Siri Suggestions 🇺🇸US")
+    * Quantumult X:
+      * 旧版，用重写修改地区为🇹🇼TW:[Siri_Suggestions_TW.qxrewrite](./qxrewrite/Siri_Suggestions_TW.qxrewrite?raw=true " Enable Siri Suggestions 🇹🇼TW") (Author:@edgexyz)
+      * 旧版，用重写修改地区为🇯🇵JP:[Siri_Suggestions_JP.qxrewrite](./qxrewrite/Siri_Suggestions_JP.qxrewrite?raw=true " Enable Siri Suggestions 🇯🇵JP")
+      * 旧版，用重写修改地区为🇺🇸US:[Siri_Suggestions_US.qxrewrite](./qxrewrite/Siri_Suggestions_US.qxrewrite?raw=true " Enable Siri Suggestions 🇺🇸US") (Author:@edgexyz)
+    * Surge:
+      * 适用于iOS/iPadOS,不含macOS规则集的模块:
       * 旧版，用重写修改地区为🇹🇼TW:[Siri_Suggestions_TW.sgmodule](./sgmodule/Siri_Suggestions_TW.sgmodule?raw=true " Enable Siri Suggestions 🇹🇼TW")
       * 旧版，用重写修改地区为🇯🇵JP:[Siri_Suggestions_JP.sgmodule](./sgmodule/Siri_Suggestions_JP.sgmodule?raw=true " Enable Siri Suggestions 🇯🇵JP")
       * 旧版，用重写修改地区为🇺🇸US:[Siri_Suggestions_US.sgmodule](./sgmodule/Siri_Suggestions_US.sgmodule?raw=true " Enable Siri Suggestions 🇺🇸US")
         * macOS用域名集:[Wikipedia_for_Look_Up.list](./RuleSet/Wikipedia_for_Look_Up.list?raw=true "Wikipedia for Look Up")
-          * 此域名集只作用于macOS的`词典`和维基百科搜索集成，且需要开启Surge的`增强模式`，iOS/iPadOS不需要此域名集，Loon与Quantumult X无效且不适用。
-    * macOS/iOS通用模块(🆕新版，自动改为`语言与地区`相同设置):
-      * 🆕针对策略组为PROXY的模块:[Siri_Suggestions_for_Uppercase_PROXY.sgmodule](./sgmodule/Siri_Suggestions_for_Uppercase_PROXY.sgmodule?raw=true " Enable Siri Suggestions")
-      * 🆕针对策略组为Proxy的模块:[Siri_Suggestions_for_Proxy.sgmodule](./sgmodule/Siri_Suggestions_for_Proxy.sgmodule?raw=true " Enable Siri Suggestions") 
-      * 🆕针对策略组为🌑Proxy的模块(如:DivineEngine):[Siri_Suggestions_for_DivineEngine.sgmodule](./sgmodule/Siri_Suggestions_for_DivineEngine.sgmodule?raw=true " Enable Siri Suggestions") 
-      * 🆕针对策略组为Apple的模块:[Siri_Suggestions_for_Apple.sgmodule](./sgmodule/Siri_Suggestions_for_Apple.sgmodule?raw=true " Enable Siri Suggestions") 
-      * 🆕针对策略组为🍎Apple的模块:[Siri_Suggestions_for_Apple_icon.sgmodule](./sgmodule/Siri_Suggestions_for_Apple_icon.sgmodule?raw=true " Enable Siri Suggestions")
-      * 🆕针对策略组为🍎 Apple的模块:[Siri_Suggestions_for_Apple_blank_icon.sgmodule](./sgmodule/Siri_Suggestions_for_Apple_blank_icon.sgmodule?raw=true " Enable Siri Suggestions")
-      * 🆕针对策略组为🍎 苹果服务的模块(如:ACL4SSR):[Siri_Suggestions_for_ACL4SSR.sgmodule](./sgmodule/Siri_Suggestions_for_ACL4SSR.sgmodule?raw=true " Enable Siri Suggestions")  
+        * 此域名集只作用于macOS的`词典`和维基百科搜索集成，且需要开启Surge的`增强模式`，iOS/iPadOS不需要此域名集，运行于M1处理器的Mac设备上的Loon与Quantumult X可能有效。
 
 -----------------
 
@@ -452,7 +483,7 @@ macOS 12.0.1, iOS 15.1, iOS 14.8 测试通过
 
 ## 解锁状态说明
 |  锁定状态  | 解锁成功 | 解锁失效 | 
-|   :-:   |   :-:   |   :-:   |
+| :---: | :---: | :---: |
 | 未通过地区检测  | 已成功通过地区检测 | 通过检测后，再次触发检测时未通过检测  |
 | 请在`✈️飞行模式`下通过`Wi-Fi`或`有线网络`再次执行解锁步骤  | `gateway.icloud.com`需走代理才能完整加载内容 | 请在`✈️飞行模式`下通过`Wi-Fi`或`有线网络`再次执行解锁步骤  |
 |<p> Apple News isn't supported in your current region. </p>|<p> **Feed Unavailable**  <br> There may be a problem with the sever or network. Plase try again later. </p>|<p> **Feed Unavailable** <br> Apple News isn't supported in your current region. </p>|
@@ -472,12 +503,83 @@ macOS 12.0.1, iOS 15.1, iOS 14.8 测试通过
     * 不含规则集的模块:[Apple_News.sgmodule](./sgmodule/Apple_News.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
       * 域名集:[Apple_News.list](./RuleSet/Apple_News.list?raw=true "Apple_News")
     * 预置策略组的模块:
-      * 针对策略组为PROXY的模块:[Apple_News_for_Uppercase_PROXY.sgmodule](./sgmodule/Apple_News_for_Uppercase_PROXY.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
-      * 针对策略组为Proxy的模块:[Apple_News_for_Proxy.sgmodule](./sgmodule/Apple_News_for_Proxy.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
-      * 针对策略组为🌑Proxy的模块(如:DivineEngine):[Apple_News_for_DivineEngine.sgmodule](./sgmodule/Apple_News_for_DivineEngine.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
-      * 针对策略组为Apple的模块:[Apple_News_for_Apple.sgmodule](./sgmodule/Apple_News_for_Apple.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
-      * 针对策略组为🍎Apple的模块:[Apple_News_for_Apple_icon.sgmodule](./sgmodule/Apple_News_for_Apple_icon.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
-      * 针对策略组为🍎 Apple的模块:[Apple_News_for_Apple_blank_icon.sgmodule](./sgmodule/Apple_News_for_Apple_blank_icon.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
-      * 针对策略组为🍎 苹果服务的模块(如:ACL4SSR):[Apple_News_for_ACL4SSR.sgmodule](./sgmodule/Apple_News_for_ACL4SSR.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
-      * 针对策略组为Apple News的模块:[Apple_News_for_Apple_News.sgmodule](./sgmodule/Apple_News_for_Apple_News.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
-      * 针对策略组为🇺🇸美国的模块:[Apple_News_for_US_icon.sgmodule](./sgmodule/Apple_News_for_US_icon.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
+      * 针对策略组为`PROXY`的模块:[Apple_News_for_Uppercase_PROXY.sgmodule](./sgmodule/Apple_News_for_Uppercase_PROXY.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
+      * 针对策略组为`Proxy`的模块:[Apple_News_for_Proxy.sgmodule](./sgmodule/Apple_News_for_Proxy.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
+      * 针对策略组为`🌑Proxy`的模块(如:DivineEngine):[Apple_News_for_DivineEngine.sgmodule](./sgmodule/Apple_News_for_DivineEngine.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
+      * 针对策略组为`Apple`的模块:[Apple_News_for_Apple.sgmodule](./sgmodule/Apple_News_for_Apple.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
+      * 针对策略组为`🍎Apple`的模块:[Apple_News_for_Apple_icon.sgmodule](./sgmodule/Apple_News_for_Apple_icon.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
+      * 针对策略组为`🍎 Apple`的模块(如:Surgio):[Apple_News_for_Apple_blank_icon.sgmodule](./sgmodule/Apple_News_for_Apple_blank_icon.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
+      * 针对策略组为`📡 Apple 地区限制`的模块(如:Surgio):[iCloud_Private_Relay_Gateway_for_Surgio.sgmodule](./sgmodule/iCloud_Private_Relay_Gateway_for_Surgio.sgmodule?raw=true " Enable iCloud Private Relay on gateway")
+      * 针对策略组为`🍎 苹果服务`的模块(如:ACL4SSR):[Apple_News_for_ACL4SSR.sgmodule](./sgmodule/Apple_News_for_ACL4SSR.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
+      * 针对策略组为`Apple News`的模块:[Apple_News_for_Apple_News.sgmodule](./sgmodule/Apple_News_for_Apple_News.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
+      * 针对策略组为`🇺🇸美国`的模块:[Apple_News_for_US_icon.sgmodule](./sgmodule/Apple_News_for_US_icon.sgmodule?raw=true " Unlock Apple News 🇺🇸US")
+
+---
+
+# 🌐iCloud 专用代理(🚧测试中，有问题请反馈)
+## 简介
+  * 保持模块/规则启用,即可让此网关下属终端设备正常直连使用「iCloud 专用代理」。
+  
+  * 注:
+    * iCloud 专用代理本质为TUN模式透明代理，所以与本机TUN模式VPN冲突，解决方法待验证。
+    * 启用模块/规则的设备自身无法解锁/使用「iCloud 专用代理」（待验证）。
+    * 仅在`Surge for Mac`的`网关模式`下通过测试，未在`Surge for iOS`的`Wi-Fi访问`测试过。
+    * 「可用性验证」环节依旧需要走代理（域名列表待优化），「专用代理」自身流量为直链访问，落地服务器取决于「可用性验证」环节指向的代理服务器。
+    * 一旦「专用代理」启用工作，几个iCloud地区检测域名将不再暴露于「专用代理」代理之外，可不用保持相关检测地址走代理。
+    * 「专用代理」访问采用QUIC(UDP,443)技术，相关服务器由Akamai、Fastly 和Cloudflare提供，请保证自身直连访问这些服务良好，居住地及运营商网络质量堪忧请自己想办法解决。
+    * 相关介绍请见:https://developer.apple.com/cn/support/prepare-your-network-for-icloud-private-relay/
+    * 出口IP列表:https://mask-api.icloud.com/egress-ip-ranges.csv
+
+## 激活方式
+  * 因为目前没有稳定触发`专用代理`当前地区可用性检测的方法，所以建议重新开机来手动触发检测
+  * 未装有SIM卡或设置了SIM卡PIN的iOS/iPadOS/macOS设备，可省略`✈️飞行模式`相关步骤
+  1. 在充当网关的`Surge for macOS`上启用`Apple_iCloud_Private_Relay.getaway.sgmodule`模块
+  2. 在`Surge for macOS`中指定相关代理线路为🇺🇸美国或其他可用地区,或者`全局模式`
+  3. 打开终端设备的`✈️飞行模式`后`关机`
+  4. 重新将终端设备`开机`,解锁屏幕但不关闭`✈️飞行模式`或不输入SIM卡PIN，等待设备连接`Wi-Fi`或`有线网络`通过`专用代理可用性`验证
+  5. 此时应在`Surge for macOS`的`请求查看器`中观察到:
+     1. 检测iCloud中是否包含`专用代理订阅(networking.privacy.subscriber)`的链接`p*-acsegateway.icloud.com`，且请求头`X-MMe-Country`是`TW`
+     2. 包含可用性检测的`获取专用代理验证令牌`链接：`https://mask-api.icloud.com/v*/fetchAuthTokens`
+     3. 包含代理服务器分配的`获取专用代理配置文件`链接：`https://mask-api.icloud.com/v*_*/fetchConfigFile`(非必需、首次启用`专用代理`或周期性更新)
+  6. 关闭终端设备`✈️飞行模式`或输入SIM卡PIN
+  7. 打开终端设备`设置`-`Apple ID`-`iCloud`-`专用代理（Beta版）`，此时应是[解锁状态说明](#解锁状态说明-1)中的`解锁成功`状态
+  8. 正常使用
+
+## 解锁状态说明
+|  不支持  |  可用  |  暂不可用  |  流量审核  |  关闭  |
+| :---: | :---: | :---: | :---: | :---: |
+| 未通过地区检测 | 已成功通过地区检测 | 与iCloud的QUIC连接被阻止 | 与iCloud专用代理的连接被阻止 | 此网络的专用代理已关闭 |
+| 请重新启动设备，在`✈️飞行模式`或SIM卡锁定下，通过`Wi-Fi`或`有线网络`再次执行解锁步骤 | 可以正常使用 | 请检查当前网络对QUIC(UDP,443)流量的Block、QoS或Drop情况 | 请检查至`mask.icloud.com`与`mask-h2.icloud.com`的连接情况 | 请在此`Wi-Fi`或`有线网络`的设置中打开`iCloud专用代理` |
+|<p> **此国家或地区尚不支持专用代理。** <br> {国家或地区}尚不支持专用代理。当您在支持的国家或地区联网时，可将其打开。</p>|<p> 无说明 </p>|<p> **由于技术问题，专用代理暂时不可用。** <br> 问题解决时将自动恢复工作。 </p>|<p> **专用代理已对“{当前网络}”关闭** <br> 专用代理不受此网络支持或已在Wi-Fi设置中关闭。专用代理关闭时，此网络可监控您的互联网活动，且您的IP地址将不会对已知跟踪器或网站隐藏。</p>|<p> **专用代理已对“{当前网络}”关闭** <br> 使用“{当前网络}”时，网站和跟踪器可获取您的互联网地址。</p>|
+|![🔒不支持截图](./ScreenShots/iCloud%20Private%20Relay%20-%20Not%20Supported%20-%20iOS.jpeg?raw=true "iCloud Private Relay - Not Supported - iOS")|![🔓可用截图](./ScreenShots/iCloud%20Private%20Relay%20-%20Avaliable%20-%20iOS.jpeg?raw=true "iCloud Private Relay - Avaliable - iOS")|![🔒暂不可用截图](./ScreenShots/iCloud%20Private%20Relay%20-%20Temporarily%20Unavaliable%20-%20iOS.jpeg?raw=true "iCloud Private Relay - Temporarily Unavaliable - iOS")|![🔒流量审核截图](./ScreenShots/iCloud%20Private%20Relay%20-%20Network%20Traffic%20Audits%20-%20iOS.jpeg?raw=true "iCloud Private Relay - Network Traffic Audits - iOS")|![🔒关闭截图](./ScreenShots/iCloud%20Private%20Relay%20-%20Turned%20Off%20-%20iOS.jpeg?raw=true "iCloud Private Relay - Turned Off - iOS")|
+
+## 功能列表
+  * 在以下位置及功能中可用: 
+    - [x] 邮件(Mail)
+    - [x] Safari浏览器(Safari)
+      - [x] WebKit(WebKit Networking)
+    - [x] DNS查询(DNS resolution queries)
+      - [x] https://doh.dns.apple.com/dns-query
+      - [x] https://mask.icloud.com/dns-query
+      - [x] https://oblivious.r15.doh.dns.akasecure.net/dns-query
+      - [x] https://odoh.cloudflare-dns.com/dns-query
+    - [x] 不安全的 http app 流量(insecure http app traffic)
+
+## 安装链接
+### `Surge for macOS`with`网关模式`
+  * Surge:
+  * 不含规则集的模块:[iCloud_Private_Relay_Gateway.sgmodule](./sgmodule/iCloud_Private_Relay_Gateway.sgmodule?raw=true " Enable iCloud Private Relay on gateway")
+    * 域名集:
+      * QUIC代理流量:[iCloud_Private_Relay_QUIC.list](./RuleSet/iCloud_Private_Relay_QUIC.list?raw=true "iCloud Private Relay QUIC")
+      * 检测与配置流量:[iCloud_Private_Relay_Configs.list](./RuleSet/iCloud_Private_Relay_Configs.list?raw=true "iCloud Private Relay Configs")
+  * 预置策略组的模块:
+    * 针对策略组为`PROXY`的模块:[iCloud_Private_Relay_Gateway_for_Uppercase_PROXY.sgmodule](./sgmodule/iCloud_Private_Relay_Gateway_for_Uppercase_PROXY.sgmodule?raw=true " Enable iCloud Private Relay on gateway")
+    * 针对策略组为`Proxy`的模块:[iCloud_Private_Relay_Gateway_for_Proxy.sgmodule](./sgmodule/iCloud_Private_Relay_Gateway_for_Proxy.sgmodule?raw=true " Enable iCloud Private Relay on gateway")
+    * 针对策略组为`🌑Proxy`的模块(如:DivineEngine):[iCloud_Private_Relay_Gateway_for_DivineEngine.sgmodule](./sgmodule/iCloud_Private_Relay_Gateway_for_DivineEngine.sgmodule?raw=true " Enable iCloud Private Relay on gateway")
+    * 针对策略组为`Apple`的模块:[iCloud_Private_Relay_Gateway_for_Apple.sgmodule](./sgmodule/iCloud_Private_Relay_Gateway_for_Apple.sgmodule?raw=true " Enable iCloud Private Relay on gateway")
+    * 针对策略组为`🍎Apple`的模块:[iCloud_Private_Relay_Gateway_for_Apple_icon.sgmodule](./sgmodule/iCloud_Private_Relay_Gateway_for_Apple_icon.sgmodule?raw=true " Enable iCloud Private Relay on gateway")
+    * 针对策略组为`🍎 Apple`的模块(如:Surgio):[iCloud_Private_Relay_Gateway_for_Surgio.sgmodule](./sgmodule/iCloud_Private_Relay_Gateway_for_Surgio.sgmodule?raw=true " Enable iCloud Private Relay on gateway")
+    * 针对策略组为`🍎 苹果服务`的模块(如:ACL4SSR):[iCloud_Private_Relay_Gateway_for_ACL4SSR.sgmodule](./sgmodule/iCloud_Private_Relay_Gateway_for_ACL4SSR.sgmodule?raw=true " Enable iCloud Private Relay on gateway")
+
+### `Clash`
+  * todo

@@ -4,8 +4,9 @@ README:https://github.com/VirgilClyne/iRingo
 const $ = new Env('Apple TV');
 $.VAL = {
 	"url": $request.url,
-	"body": $request?.body ?? (typeof $response != "undefined") ? $response?.body : null
+	"body": ($request.body) ? $request.body : (typeof $response != "undefined") ? $response.body : null
 };
+console.log($.VAL)
 
 /***************** Async *****************/
 
@@ -60,6 +61,53 @@ $.VAL = {
 		$.VAL.url = (processQuery($.VAL.url, 'pfm') == 'desktop') ? processQuery($.VAL.url, 'pfm', 'ipad') : $.VAL.url;
 		$.done({ "url": $.VAL.url });
 	}
+	/*
+	} else if ($.VAL.url.indexOf("/uts/v3/canvases/Roots/watchNow?") != -1 || $.VAL.url.indexOf("/uts/v3/canvases/roots/tahoma_watchnow?") != -1) { // https://uts-api.itunes.apple.com/uts/v3/canvases/Roots/watchNow? https://uts-api.itunes.apple.com/uts/v3/canvases/roots/tahoma_watchnow?
+		$.VAL.url = (processQuery($.VAL.url, 'pfm') == 'desktop') ? processQuery($.VAL.url, 'pfm', 'appletv') : $.VAL.url;
+		$.done({ "url": $.VAL.url });
+	} else if ($.VAL.url.indexOf("/uts/v3/shelves/uts.col.UpNext?") != -1) { // https://uts-api.itunes.apple.com/uts/v3/shelves/uts.col.UpNext?
+		$.VAL.url = (processQuery($.VAL.url, 'pfm') == 'desktop') ? processQuery($.VAL.url, 'pfm', 'ipad') : $.VAL.url;
+		$.done({ "url": $.VAL.url });
+	} else if ($.VAL.url.indexOf("/uts/v3/canvases/Channels/tvs.sbd.4000?") != -1) { // https://uts-api.itunes.apple.com/uts/v3/canvases/Channels/tvs.sbd.4000?
+		$.done({ "url": $.VAL.url });
+	} else if ($.VAL.url.indexOf("/uts/v2/brands?") != -1) { // https://uts-api.itunes.apple.com/uts/v2/brands?
+		$.VAL.url = processQuery($.VAL.url, 'sf', '143441');
+		$.done({ "url": $.VAL.url });
+	} else if ($.VAL.url.indexOf("/uts/v3/canvases/Roots/movies?") != -1 || $.VAL.url.indexOf("/uts/v3/movies/") != -1) { // https://uts-api.itunes.apple.com/uts/v3/canvases/Roots/Movies? https://uts-api.itunes.apple.com/uts/v3/movies/
+		$.VAL.url = (processQuery($.VAL.url, 'pfm') == 'desktop') ? processQuery($.VAL.url, 'pfm', 'ipad') : $.VAL.url;
+		$.done({ "url": $.VAL.url });
+	} else if ($.VAL.url.indexOf("/uts/v3/canvases/Roots/tv?") != -1 || $.VAL.url.indexOf("/uts/v3/shows/") != -1) { // https://uts-api.itunes.apple.com/uts/v3/canvases/Roots/TV? https://uts-api.itunes.apple.com/uts/v3/shows/
+		$.VAL.url = (processQuery($.VAL.url, 'pfm') == 'desktop') ? processQuery($.VAL.url, 'pfm', 'ipad') : $.VAL.url;
+		$.done({ "url": $.VAL.url });
+	} else if ($.VAL.url.indexOf("/uts/v3/canvases/Roots/sports?") != -1 || $.VAL.url.indexOf("/uts/v2/sports/") != -1) { // https://uts-api.itunes.apple.com/uts/v3/canvases/Roots/Sports? https://uts-api.itunes.apple.com/uts/v2/sports/
+		$.VAL.url = (processQuery($.VAL.url, 'pfm') == 'desktop') ? processQuery($.VAL.url, 'pfm', 'ipad') : $.VAL.url;
+		$.VAL.url = processQuery($.VAL.url, 'sf', '143441');
+		$.done({ "url": $.VAL.url });
+	} else if ($.VAL.url.indexOf("/uts/v3/canvases/Roots/Kids?") != -1) { // https://uts-api.itunes.apple.com/uts/v3/canvases/Roots/Kids?
+		$.VAL.url = processQuery($.VAL.url, 'sf', '143441');
+		$.done({ "url": $.VAL.url });
+	} else if ($.VAL.url.indexOf("/uts/v3/watchlist") != -1) { // https://uts-api.itunes.apple.com/uts/v3/watchlist
+		$.VAL.url = (processQuery($.VAL.url, 'pfm') == 'desktop') ? processQuery($.VAL.url, 'pfm', 'ipad') : $.VAL.url;
+		$.done({ "url": $.VAL.url });
+	} else if ($.VAL.url.indexOf("/uts/v3/playables/") != -1) { // https://uts-api.itunes.apple.com/uts/v3/playables/
+		$.VAL.url = processQuery($.VAL.url, 'sf', '143441');
+		$.done({ "url": $.VAL.url });
+	} else if ($.VAL.url.indexOf("/uts/v2/favorites?") != -1) { // https://uts-api.itunes.apple.com/uts/v2/favorites?
+		$.VAL.url = processQuery($.VAL.url, 'sf', '143441');
+		$.done({ "url": $.VAL.url });
+	} else if ($.VAL.url.indexOf("/uts/v2/favorites/") != -1) { // https://uts-api.itunes.apple.com/uts/v2/favorites/
+		$.VAL.body = $.VAL.body.replace(sf = /[\d]{6}/g, sf = 143441);
+		//$.log(`🎉 ${$.name}, redirectFavorites, Finish`, `$.VAL.body = ${$.VAL.body}`, '')
+		$.done({ "body": $.VAL.body });
+	} else if ($.VAL.url.indexOf("/uts/v3/sporting-events/") != -1) { // https://uts-api.itunes.apple.com/uts/v3/sporting-events/
+		$.VAL.url = (processQuery($.VAL.url, 'pfm') == 'desktop') ? processQuery($.VAL.url, 'pfm', 'ipad') : $.VAL.url;
+		$.VAL.url = processQuery($.VAL.url, 'sf', '143441');
+		$.done({ "url": $.VAL.url });
+	} else if ($.VAL.url.indexOf("/uts/v3/canvases/Persons/") != -1) { // https://uts-api.itunes.apple.com/uts/v3/canvases/Persons/
+		$.VAL.url = (processQuery($.VAL.url, 'pfm') == 'desktop') ? processQuery($.VAL.url, 'pfm', 'ipad') : $.VAL.url;
+		$.done({ "url": $.VAL.url });
+	}
+	*/
 })()
 	.catch((e) => $.logErr(e))
 	.finally(() => $.done())
@@ -71,6 +119,7 @@ function getOrigin(url) {
 	return new Promise((resolve) => {
 		const Regular = /^https?:\/\/(?<dataServer>uts-api|uts-api-siri)\.itunes\.apple\.com\/uts\/(?<Version>v1|v2|v3)\/configurations\?.*v=(?<ConfVer>\d{2,}).*/i;
 		try {
+			//[$.url, $.dataServer, $.apiVer] = url.match(Regular);
 			var Parameter = url.match(Regular).groups;
 			Parameter.ConfVer = Number(Parameter.ConfVer);
 			Parameter.caller = processQuery(url, 'caller');
@@ -84,6 +133,7 @@ function getOrigin(url) {
 		} catch (e) {
 			$.log(`❗️${$.name}, ${getOrigin.name}执行失败`, `error = ${e}`, '');
 		} finally {
+			//$.log(`🎉 ${$.name}, getOrigin, Finish`, $.url, `${$.dataServer}, ${$.apiVer}, ${$.caller}, ${$.platform}, ${$.region}, ${$.country}, ${$.locale}`, '')
 			$.log(`🎉 ${$.name}, ${getOrigin.name}完成`, JSON.stringify(Parameter), '');
 			resolve(Parameter);
 		}
@@ -113,8 +163,19 @@ async function createTabsGroup(Parameter) {
 
 	// 创建分组
 	var tabs = (Parameter.ConfVer > 53) ? [WatchNow, Originals, Store, Sports, Kids, Library, Search]
-	: [WatchNow, Originals, Movies, TV, Sports, Kids, Library, Search];
+		: [WatchNow, Originals, Movies, TV, Sports, Kids, Library, Search];
 	var tabsSplitScreen =  [WatchNow, Originals, Store, Library, Search];
+	
+	/*
+	// 简体中文改Tabs语言
+	if (locale) var esl = locale.match(/[a-z]{2}_[A-Za-z]{2,3}/g)
+	if (esl != "zh_Hans" || esl != "zh_Hant" || esl != "yue-Hant" || region != "CN") {
+		if (platform == "iphone" || platform == "ipad") var maps = new Map([['立即观看', 'Watch Now'], ['原创内容', 'Originals'], ['电影', 'Movies'], ['电视节目', 'TV'], ['体育节目', 'Sports'], ['儿童', 'Kids'], ['商店', 'Store'], ['资料库', 'Library'], ['搜索', 'Search']])
+		else var maps = new Map([['立即观看', 'Watch Now'], ['Apple TV+', 'Apple TV+'], ['电影', 'Movies'], ['电视节目', 'TV'], ['体育节目', 'Sports'], ['儿童', 'Kids'], ['商店', 'Store'], ['资料库', 'Library'], ['搜索', 'Search']]);
+		tabs = tabs.map(element => { element.title = maps.get(element.title); return element; });
+	};
+	*/
+	
 	// 输出
 	return [tabs, tabsSplitScreen];
 };
@@ -133,12 +194,17 @@ function outputData(Parameter, body, [tabs, tabsSplitScreen]) {
 			else if (Parameter.Version == "v3") {
 				// 注入数据
 				//条件运算符 & 可选链操作符 
+				//configurations.data.applicationProps.requiredParamsMap.WithoutUtsk.locale = "zh_Hans";
+				//configurations.data.applicationProps.requiredParamsMap.Default.locale = "zh_Hans";
 				configurations.data.applicationProps.tabs = tabs;
+				//configurations.data.applicationProps.tabs = createTabsGroup("Tabs", caller, platform, locale, region);
 				if (Parameter.ConfVer > 53) configurations.data.applicationProps.tabsSplitScreen = tabsSplitScreen;
+				//configurations.data.applicationProps.tabsSplitScreen = createTabsGroup("TabsGroup", caller, platform, locale, region);
 				configurations.data.applicationProps.tvAppEnabledInStorefront = true;
 				configurations.data.applicationProps.enabledClientFeatures = (Parameter.ConfVer > 53) ? [{ "domain": "tvapp", "name": "snwpcr" }, { "domain": "tvapp", "name": "store_tab" }]
-				: [{ "domain": "tvapp", "name": "expanse" }, { "domain": "tvapp", "name": "syndication" }, { "domain": "tvapp", "name": "snwpcr" }];
+					: [{ "domain": "tvapp", "name": "expanse" }, { "domain": "tvapp", "name": "syndication" }, { "domain": "tvapp", "name": "snwpcr" }];
 				configurations.data.applicationProps.storefront.localesSupported = ["zh_Hans", "zh_Hant", "yue-Hant", "en_US", "en_GB"];
+				//configurations.data.applicationProps.storefront.storefrontId = 143470;
 				configurations.data.applicationProps.featureEnablers = {
 					"topShelf": true,
 					"unw": true,
@@ -147,6 +213,8 @@ function outputData(Parameter, body, [tabs, tabsSplitScreen]) {
 					"seasonTitles": false
 				};
 				configurations.data.userProps.activeUser = true;
+				//configurations.data.userProps.utsc = "1:18943";
+				//configurations.data.userProps.country = country;
 				configurations.data.userProps.gac = true;
 			} else $.done();
 		} catch (e) {

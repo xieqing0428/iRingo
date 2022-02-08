@@ -2,9 +2,9 @@
 解锁完整的Apple功能和集成服务   
 macOS 12.0.1, iOS 15.1, iOS 14.8 测试通过  
 需要启用`重写`、`脚本`、`MitM`功能  
-如无特别声明，以下功能及模块，均适用于iOS/iPadOS/macOS/watchOS，模块间互无依赖，均可单独或搭配使用
-有问题请至Issue页面反馈
-Telegram讨论组:[🍟 整点薯条](https://t.me/GetSomeFries)
+如无特别声明，以下功能及模块，均适用于iOS/iPadOS/macOS/watchOS，模块间互无依赖，均可单独或搭配使用  
+有问题请至Issue页面反馈  
+Telegram讨论组:[🍟 整点薯条](https://t.me/GetSomeFries)  
 
 ---
 
@@ -21,6 +21,7 @@ Telegram讨论组:[🍟 整点薯条](https://t.me/GetSomeFries)
   - [简介](#简介)
   - [功能列表](#功能列表)
   - [关于天气API](#关于天气api)
+  - [使用说明](#使用说明)
   - [安装链接](#安装链接)
 - [📍定位服务](#定位服务)
   - [简介](#简介-1)
@@ -44,7 +45,7 @@ Telegram讨论组:[🍟 整点薯条](https://t.me/GetSomeFries)
   - [简介](#简介-3)
   - [激活方式](#激活方式-2)
   - [安装链接](#安装链接-3)
-- [📺Apple TV（🚧未适配带商店页面的新版）](#apple-tv未适配带商店页面的新版)
+- [📺Apple TV](#apple-tv)
   - [简介](#简介-4)
   - [激活方式](#激活方式-3)
   - [功能列表](#功能列表-2)
@@ -55,7 +56,7 @@ Telegram讨论组:[🍟 整点薯条](https://t.me/GetSomeFries)
   - [解锁状态说明](#解锁状态说明)
   - [关于新闻小组件](#关于新闻小组件)
   - [安装链接](#安装链接-5)
-- [🌐iCloud 专用代理(🚧测试中，有问题请反馈)](#icloud-专用代理测试中有问题请反馈)
+- [🌐iCloud 专用代理](#icloud-专用代理)
   - [简介](#简介-6)
   - [激活方式](#激活方式-5)
   - [解锁状态说明](#解锁状态说明-1)
@@ -154,7 +155,18 @@ Telegram讨论组:[🍟 整点薯条](https://t.me/GetSomeFries)
     * `v1`:Watch、地图、iOS15以下的天气APP、macOS12以下的天气小组件
     * `v2`:iOS15以上的天气APP、macOS12以上的天气小组件
 
-## 安装链接 
+## 使用说明
+  * 安装模块或插件后不进行配置即可直接使用
+    * 采用`waqi.info 公共API`，先查询距离最近的`观测站`，再获取此观测站专用`令牌`，最后获取此`观测站`AQI详细数据，共三步。
+  * 安装BoxJs并配置私有令牌，配合模块或插件使用
+    * 采用`waqi.info 私有API`
+      * 当选择`定位精度: 城市`时，直接获取`城市`AQI数据，共一步。
+      * 当选择`定位精度: 观测站`时，先查询距离最近的`观测站`，然后获取此`观测站`AQI详细数据，共两步。
+  * 注: 申请`waqi.info 私有API`令牌请见: [Air Quality Open Data Platform API Token Request Form](https://aqicn.org/data-platform/token/cn/#/)
+
+## 安装链接
+  * BoxJs:
+    * 应用订阅:[iRingo.boxjs](./box/iRingo.boxjs.json?raw=true)
   * Loon:
     * 空气质量数据:[Apple_Weather.plugin](./plugin/Apple_Weather.plugin?raw=true " Replace Apple Weather 🇺🇸US with @waqi.info")
   * Quantumult X:
@@ -423,7 +435,7 @@ Telegram讨论组:[🍟 整点薯条](https://t.me/GetSomeFries)
 
 ---
 
-# 📺Apple TV（🚧未适配带商店页面的新版）
+# 📺Apple TV
 ## 简介
   * 保持模块启用,即可在全设备平台解锁TV app全部已知功能，并优先使用简体中文(zh-Hans)。
 
@@ -443,10 +455,11 @@ Telegram讨论组:[🍟 整点薯条](https://t.me/GetSomeFries)
     4. 重新输入`Apple ID`与`密码`登入（🇨🇳CN地区账号无效）
     5. 此时应在`Surge`的`最近请求`或`Quantumult X`的`网络活动`中观察到:
       1. `Apple TV`的`https://uts-api.itunes.apple.com/uts/v3/configitions`链接
-    6. 查看`Apple TV`app的`立即观看`页面是否有`电影`、`电视节目`、`体育节目`、`儿童`四个二级入口(iOS/iPadOS)
-    7. 查看`Apple TV`app的顶部是否有`立即观看`、`tv+`、`电影`、`电视节目`、`体育节目`、`资料库`五个标签页按钮(macOS/tvOS)
-    8. 如没有请重开一次app
-    9. 正常使用
+    6. 查看`Apple TV`app的`立即观看`页面是否有`儿童`一个二级入口(iOS/iPadOS)
+    7. 查看`Apple TV`app的标签栏是否有`立即观看`、`原创内容`、`商店`、`体育节目`、`资料库`五个标签页按钮(iOS/iPadOS)
+    8. 查看`Apple TV`app的标签栏是否有`立即观看`、`tv+`、`商店`、`体育节目`、`儿童`、`资料库`六个标签页按钮(macOS/tvOS)
+    9. 如没有请重开一次app
+    10. 正常使用
 
 ## 功能列表
   * 硬件及平台
@@ -459,10 +472,9 @@ Telegram讨论组:[🍟 整点薯条](https://t.me/GetSomeFries)
   * 分类页面
     - [x] 立即观看
     - [x] TV+
-    - [x] 电影
-    - [x] 电视节目
+    - [x] 商店 (电影、电视节目为`商店`二级菜单)
     - [x] 体育节目 (macOS无关注「喜爱的球队」功能和显示比分功能)
-    - [x] 儿童 (macOS限制最多6个标签页，故macOS版隐藏「儿童」标签页)
+    - [x] 儿童 (iOS/iPadOS为`立即观看`二级菜单)
     - [x] 资料库
     - [x] 搜索
 
@@ -536,7 +548,7 @@ Telegram讨论组:[🍟 整点薯条](https://t.me/GetSomeFries)
 
 ---
 
-# 🌐iCloud 专用代理(🚧测试中，有问题请反馈)
+# 🌐iCloud 专用代理
 ## 简介
   * 保持模块/规则启用,即可让此网关下属终端设备正常直连使用「iCloud 专用代理」。
   

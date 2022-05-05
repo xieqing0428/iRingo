@@ -1,94 +1,353 @@
 {
-    "id": "iRingo.beta.app.sub",
-    "name": "iRingo β",
-    "author": "@VirgilClyne",
-    "description": "解锁完整的 Apple功能和集成服务",
-    "icon": "https://avatars.githubusercontent.com/u/2111377?s=100&v=4",
-    "repo": "https://github.com/VirgilClyne/iRingo",
-    "apps": [
-        {
-            "id": "@iRingo.Apple.Weather.beta",
-            "name": "Apple Weather β",
-            "descs_html": [
-                "请参照<a href=\"https://github.com/VirgilClyne/iRingo#天气\">iRingo#天气</a>的使用说明进行配置",
-                "填写完成后别忘点击此页面底端右下角的\"保存\"。",
-                "查询速度:\"私有API+城市\" > \"私有API+观测站\" > \"公共API+观测站\"",
-                "定位精度:\"观测站\" > \"城市\""
-            ],
-            "keys": [
-                "@iRingo.Apple.Weather"
-            ],
-            "settings": [
-                {
-                    "id": "@iRingo.Apple.Weather.Mode",
-                    "name": "工作模式",
-                    "val": "WAQI Public",
-                    "type": "radios",
-                    "items": [
-                        {
-                            "key": "WAQI Public",
-                            "label": "waqi.info 公共API"
-                        },
-                        {
-                            "key": "WAQI Private",
-                            "label": "waqi.info 私有API"
-                        }
-                    ],
-                    "desc": "没有申请自己Token的只能使用\"公共API\""
-                },
-                {
-                    "id": "@iRingo.Apple.Weather.Location",
-                    "name": "定位精度",
-                    "val": "Station",
-                    "type": "radios",
-                    "items": [
-                        {
-                            "key": "City",
-                            "label": "城市"
-                        },
-                        {
-                            "key": "Station",
-                            "label": "观测站"
-                        }
-                    ],
-                    "desc": "获取天气数据的精确度，\"观测站\"会获取距离你最近的观测站数据，\"城市\"只会获取所在地城市指定观测站的数据"
-                },
-                {
-                    "id": "@iRingo.Apple.Weather.Verify.Mode",
-                    "name": "验证方式",
-                    "val": "Token",
-                    "type": "radios",
-                    "items": [
-                        {
-                            "key": "Token",
-                            "label": "令牌"
-                        }
-                    ],
-                    "desc": "验证方式"
-                },
-                {
-                    "id": "@iRingo.Apple.Weather.Verify.Content",
-                    "name": "验证内容",
-                    "val": "",
-                    "type": "text",
-                    "placeholder": "1234567893feefc5f0q5000bfo0c38d90bbeb",
-                    "desc": "‘令牌’验证方式的值写一行"
-                },
-                {
-                    "id": "@iRingo.Apple.Weather.Scale",
-                    "name": "测量标准代码",
-                    "val": "EPA_NowCast.2201",
-                    "type": "text",
-                    "placeholder": "EPA_NowCast.2201",
-                    "desc": "空气质量标准代码，会随系统更新而更新"
-                }
-            ],
-            "author": "@VirgilClyne",
-            "repo": "https://github.com/VirgilClyne/iRingo/blob/beta/js/Apple_Weather.beta.js",
-            "icons": [
-                "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Apple.png",
-                "https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png"
-            ]
-        }
-    ]
+	"id": "iRingo.beta.app.sub",
+	"name": "iRingo β",
+	"author": "@VirgilClyne",
+	"description": "解锁完整的 Apple功能和集成服务",
+	"icon": "https://avatars.githubusercontent.com/u/2111377?s=100&v=4",
+	"repo": "https://github.com/VirgilClyne/iRingo",
+	"apps": [
+		{
+			"id": "iRingo.Weather.beta",
+			"name": "iRingo: Weather β",
+			"descs_html": [
+				"请参照<a href=\"https://github.com/VirgilClyne/iRingo#天气\">iRingo#天气</a>的使用说明进行配置",
+				"填写完成后别忘点击此页面底端右下角的\"保存\"。",
+				"查询速度:\"私有API+城市\" > \"私有API+观测站\" > \"公共API+观测站\"",
+				"定位精度:\"观测站\" > \"城市\""
+			],
+			"keys": [
+				"@iRingo.Weather"
+			],
+			"settings": [
+				{
+					"id": "@iRingo.Weather.Switch",
+					"name": "总功能开关",
+					"val": true,
+					"type": "boolean",
+					"desc": "是否启用此APP修改"
+				},
+				{
+					"id": "@iRingo.Weather.NextHour.Switch",
+					"name": "[下一小时降水]修改开关",
+					"val": true,
+					"type": "boolean",
+					"desc": "是否启用此功能修改，数据来源：气象在线"
+				},
+				{
+					"id": "@iRingo.Weather.NextHour.Debug.Switch",
+					"name": "[下一小时降水]Debug开关",
+					"val": false,
+					"type": "boolean",
+					"desc": "如果您不知道这个开关是用来做什么的，请保持关闭"
+				},
+				{
+					"id": "@iRingo.Weather.NextHour.Debug.WeatherType",
+					"name": "[下一小时降水]雨雪类型",
+					"val": "rain",
+					"type": "text",
+					"placeholder": "rain",
+					"desc": "值应为claer、rain或snow"
+				},
+				{
+					"id": "@iRingo.Weather.NextHour.Debug.Chance",
+					"name": "[下一小时降水]降水或降雪概率",
+					"val": "100",
+					"type": "text",
+					"placeholder": "100",
+					"desc": "precipChance的值，范围在0到100"
+				},
+				{
+					"id": "@iRingo.Weather.NextHour.Debug.Delay",
+					"name": "[下一小时降水]雨雪发生时间（分钟后）",
+					"val": "0",
+					"type": "text",
+					"placeholder": "0",
+					"desc": "一段时间后开始降雨或降雪"
+				},
+				{
+					"id": "@iRingo.Weather.NextHour.Debug.PrecipLower",
+					"name": "[下一小时降水]随机生成的降水数据的下限（雷达）",
+					"val": "0.031",
+					"type": "text",
+					"placeholder": "0.031",
+					"desc": "随机生成的precipIntensity的下限，四位小数"
+				},
+				{
+					"id": "@iRingo.Weather.NextHour.Debug.PrecipUpper",
+					"name": "[下一小时降水]随机生成的降水数据的上限（雷达）",
+					"val": "0.48",
+					"type": "text",
+					"placeholder": "0.48",
+					"desc": "随机生成的precipIntensity的上限，四位小数"
+				},
+				{
+					"id": "@iRingo.Weather.NextHour.Debug.IntensityLower",
+					"name": "[下一小时降水]随机生成UI显示数据的下限",
+					"val": "0",
+					"type": "text",
+					"placeholder": "0",
+					"desc": "随机生成的precipIntensityPerceived或perceivedIntensity的下限，三位小数"
+				},
+				{
+					"id": "@iRingo.Weather.NextHour.Debug.IntensityUpper",
+					"name": "[下一小时降水]随机生成UI显示数据的上限",
+					"val": "4",
+					"type": "text",
+					"placeholder": "4",
+					"desc": "随机生成的precipIntensityPerceived或perceivedIntensity的上限，最大为3，三位小数"
+				},
+				{
+					"id": "@iRingo.Weather.AQI.Switch",
+					"name": "[空气质量]修改开关",
+					"val": true,
+					"type": "boolean",
+					"desc": "是否启用此功能修改，数据来源：WAQI"
+				},
+				{
+					"id": "@iRingo.Weather.AQI.Mode",
+					"name": "[空气质量]工作模式",
+					"val": "WAQI Public",
+					"type": "radios",
+					"items": [
+						{
+							"key": "WAQI Public",
+							"label": "waqi.info 公共API"
+						},
+						{
+							"key": "WAQI Private",
+							"label": "waqi.info 私有API"
+						}
+					],
+					"desc": "没有申请自己Token的只能使用\"公共API\""
+				},
+				{
+					"id": "@iRingo.Weather.AQI.Location",
+					"name": "[空气质量]定位精度",
+					"val": "Station",
+					"type": "radios",
+					"items": [
+						{
+							"key": "City",
+							"label": "城市"
+						},
+						{
+							"key": "Station",
+							"label": "观测站"
+						}
+					],
+					"desc": "获取天气数据的精确度，\"观测站\"会获取距离你最近的观测站数据，\"城市\"只会获取所在地城市指定观测站的数据"
+				},
+				{
+					"id": "@iRingo.Weather.AQI.Auth",
+					"name": "[空气质量]WAQI令牌",
+					"val": "",
+					"type": "text",
+					"placeholder": "1234567893feefc5f0q5000bfo0c38d90bbeb",
+					"desc": "私有API令牌"
+				},
+				{
+					"id": "@iRingo.Weather.AQI.Scale",
+					"name": "[空气质量]测量标准代码",
+					"val": "EPA_NowCast.2204",
+					"type": "text",
+					"placeholder": "EPA_NowCast.2204",
+					"desc": "空气质量标准代码，会随系统更新而更新"
+				},
+				{
+					"id": "@iRingo.Weather.Map.AQI",
+					"name": "[空气质量地图]修改开关",
+					"val": false,
+					"type": "boolean",
+					"desc": "是否启用此功能修改，数据来源：WAQI"
+				}
+			],
+			"author": "@VirgilClyne",
+			"repo": "https://github.com/VirgilClyne/iRingo/blob/beta/js/Weather.beta.js",
+			"icons": [
+				"https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Apple.png",
+				"https://is4-ssl.mzstatic.com/image/thumb/Purple125/v4/c8/76/87/c8768792-b7ab-7de4-9c70-1888096b7ae9/AppIcon-0-0-1x_U007emarketing-0-0-0-10-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/108x0w.webp"
+			]
+		},
+		{
+			"id": "iRingo.Siri.beta",
+			"name": "iRingo: Siri与搜索 β",
+			"descs_html": [
+				"请参照<a href=\"https://github.com/VirgilClyne/iRingo#siri与搜索\">iRingo#siri与搜索</a>的使用说明进行配置",
+				"影响功能范围包括但不限于“Siri建议”、“来自APPLE的内容”、“来自APPLE的建议”等"
+			],
+			"keys": [
+				"@iRingo.Siri"
+			],
+			"settings": [
+				{
+					"id": "@iRingo.Siri.Switch",
+					"name": "总功能开关",
+					"val": true,
+					"type": "boolean",
+					"desc": "是否启用此APP修改"
+				},
+				{
+					"id": "@iRingo.Siri.CountryCode",
+					"name": "国家或地区代码",
+					"val": "TW",
+					"type": "selects",
+					"desc": "不同国家或地区提供的内容或有差别，此选项同时会影响分配给您不同地区的Siri服务器",
+					"items": [
+						{
+							"key": "AUTO",
+							"label": "自动（跟随系统地区设置）"
+						},
+						{
+							"key": "CN",
+							"label": "中国大陆"
+						},
+						{
+							"key": "HK",
+							"label": "香港"
+						},
+						{
+							"key": "TW",
+							"label": "台湾"
+						},
+						{
+							"key": "SG",
+							"label": "新加坡"
+						},
+						{
+							"key": "US",
+							"label": "美国"
+						},
+						{
+							"key": "JP",
+							"label": "日本"
+						},
+						{
+							"key": "AU",
+							"label": "澳大利亚"
+						},
+						{
+							"key": "UK",
+							"label": "英国"
+						},
+						{
+							"key": "KR",
+							"label": "韩国"
+						},
+						{
+							"key": "CA",
+							"label": "加拿大"
+						}
+					]
+				},
+				{
+					"id": "@iRingo.Siri.Domains",
+					"name": "启用领域",
+					"val": [
+						"web",
+						"itunes",
+						"app_store",
+						"movies",
+						"restaurants",
+						"maps"
+					],
+					"type": "checkboxes",
+					"desc": "启用搜索的领域，未选项领域将被关闭，启用领域数据由国家和地区决定，此选项仅代表功能上的开启，不代表对应地区一定有数据和服务",
+					"items": [
+						{
+							"key": "web",
+							"label": "网页"
+						},
+						{
+							"key": "itunes",
+							"label": "iTunes"
+						},
+						{
+							"key": "app_store",
+							"label": "App Store"
+						},
+						{
+							"key": "movies",
+							"label": "电影"
+						},
+						{
+							"key": "restaurants",
+							"label": "餐厅"
+						},
+						{
+							"key": "maps",
+							"label": "地图"
+						}
+					]
+				},
+				{
+					"id": "@iRingo.Siri.Functions",
+					"name": "强制启用的功能",
+					"val": [
+						"flightutilities",
+						"lookup",
+						"mail",
+						"messages",
+						"news",
+						"safari",
+						"siri",
+						"spotlight",
+						"visualintelligence"
+					],
+					"type": "checkboxes",
+					"desc": "强制启用Siri建议的APP，被选项的功能会被强制开启，但是未选不代表关闭对应的功能，仅代表还原到该地区默认设置状态",
+					"items": [
+						{
+							"key": "flightutilities",
+							"label": "航班工具"
+						},
+						{
+							"key": "lookup",
+							"label": "查询"
+						},
+						{
+							"key": "mail",
+							"label": "邮件"
+						},
+						{
+							"key": "messages",
+							"label": "信息"
+						},
+						{
+							"key": "news",
+							"label": "新闻"
+						},
+						{
+							"key": "safari",
+							"label": "Safari浏览器"
+						},
+						{
+							"key": "siri",
+							"label": "Siri"
+						},
+						{
+							"key": "spotlight",
+							"label": "聚焦搜索"
+						},
+						{
+							"key": "visualintelligence",
+							"label": "视觉智能"
+						}
+					]
+				},
+				{
+					"id": "@iRingo.Siri.Safari_Smart_History",
+					"name": "Safari智能历史记录",
+					"val": true,
+					"type": "boolean",
+					"desc": "是否在Safari浏览器中启用基于历史记录的Siri建议功能，启用后将在Safari浏览器起始页推荐基于时间地点跨设备等的相关浏览记录"
+				}
+			],
+			"author": "@VirgilClyne",
+			"repo": "https://github.com/VirgilClyne/iRingo/blob/beta/js/Siri.beta.js",
+			"icons": [
+				"https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Siri.png",
+				"https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Siri.png"
+			]
+		}
+	]
 }
